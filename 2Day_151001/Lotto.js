@@ -46,7 +46,7 @@ function randomNum(){
         var num = Math.floor(Math.random()*(45-i)+1); // 난수 발생;
         var index = num -1;
         randomNum[i] = lotto[index];
-        lotto.splice(index,1);
+        lotto.splice(index,1); //중복 발생을 피하기위하여 삭제...
         /*console.log("랜덤 : " + num);
         console.log("배열1: " + randomNum);
         console.log("로또 배열 : "  + lotto);*/
