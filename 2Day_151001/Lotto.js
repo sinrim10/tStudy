@@ -26,8 +26,11 @@ while(true){
     if(count ==5 ){
         //console.log(resultLotto);
         for(var i = 0 ; i< resultLotto.length;i++){//화면에 출력..
-            console.log(i+1 +" 번째 게임 : " + resultLotto[i].sort(function(a,b){return a>b;}));
-            document.write(i    +1 +" 번째 게임 : " + tempLotto[i].sort(function(a,b){return a>b;}));
+            resultLotto[i].sort(function(a,b){
+                return a>b;
+            });
+            console.log(i+1 +" 번째 게임 : " + resultLotto[i]);
+            document.write(i    +1 +" 번째 게임 : " + resultLotto[i]);
             document.write("<p>")
         }
         break; //5게임 생성후 종료.
