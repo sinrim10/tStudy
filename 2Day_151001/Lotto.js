@@ -1,40 +1,42 @@
 /**
  * Created by skplanet on 2015-10-01.
+ * Lotto 게임 생성 과제..
+ * 조건 1. 5게임 생성
+ * 조건 2. 1게임의 로또 번호가 100~150 사이의 값만 생성
+ * 조건 3. 정렬
+ *
  */
-var tempLotto = [];//최종 로또 값
+var resultLotto = [];//최종 로또 값
 var count = 0; //게임수
-/*for(var i = 1;i<6;i++){
-    randomNum().sort(function(a,b){
-        return a>b;
-    });
-    console.log(i + " 번째 게임 ");
-}*/
 
 while(true){
+    var randomArr = [];
+    var sum = 0;
 
-    var randomArr = randomNum();
-    var sum = randomArr.reduce(function(a,b){
+    randomArr = lottoMake();
+    sum = randomArr.reduce(function(a,b){
         return a+b;
     });
 
-    if(sum < 150 && sum > 100){
+    if(sum < 150 && sum > 100){ //총합이 100, 150 사이
         count++;
-
-        tempLotto[count-1] = randomArr;
+        resultLotto[count-1] = randomArr;
     }
+
     if(count ==5 ){
-        //console.log(tempLotto);
-        for(var i = 0 ; i< tempLotto.length;i++){
-            console.log(i+1 +" 번째 게임 : " + tempLotto[i].sort(function(a,b){return a>b;}));
+        //console.log(resultLotto);
+        for(var i = 0 ; i< resultLotto.length;i++){//화면에 출력..
+            console.log(i+1 +" 번째 게임 : " + resultLotto[i].sort(function(a,b){return a>b;}));
             document.write(i    +1 +" 번째 게임 : " + tempLotto[i].sort(function(a,b){return a>b;}));
             document.write("<p>")
         }
-        break;
+        break; //5게임 생성후 종료.
     }
 }
-//console.log(randomNum());
-
-function randomNum(){
+/*
+*  로또 번호생성 함수.
+* */
+function lottoMake(){
     var lotto = [];
     var randomNum = [];
 
@@ -42,8 +44,8 @@ function randomNum(){
         lotto[i] = i+1;
     }
 
-    for(var i=0;i<6;i++){
-        var num = Math.floor(Math.random()*(45-i)+1); // 난수 발생;
+    for(var i=0;i<6;i++){ //로또번호 추출.
+        var num = Math.floor(Math.random()*(lotto.length)+1); // 난수 발생;
         var index = num -1;
         randomNum[i] = lotto[index];
         lotto.splice(index,1); //중복 발생을 피하기위하여 삭제...
@@ -54,4 +56,3 @@ function randomNum(){
     }
     return randomNum;
 }
-//console.log(lotto);
