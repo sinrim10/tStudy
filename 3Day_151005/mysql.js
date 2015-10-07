@@ -7,15 +7,27 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : 'dltjdrb',
-    database : 'tstudy'
+    database : 'haksa'
 });
 
-connection.connect();
 
-connection.query('SELECT * from bike', function(err, rows, fields) {
+for(var i=0; i< 10 ; i++){
+
+    connection.query("insert into test set ?",{aaa: '3'+i}, function(err, result) {
+        if (err) throw err;
+
+
+    });
+
+}
+
+
+
+
+connection.query('SELECT * from test', function(err, rows, fields) {
     if (err) throw err;
 
-    console.log('The solution is: ', rows[0].id);
+    console.log('The solution is: ', rows);
 });
 
 connection.end();
