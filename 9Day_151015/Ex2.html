@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: 'get'
+            , url: '/list/json'
+            , dataType : 'json'
+            , success: function(data) {
+                console.log('ok',data);
+                console.log(data.movie);
+                for(var i=0;i<data.movie.length;i++){
+                /*    $('div').append("<div><h2>"+data.movie[i].title+"</h2><img src='/images/"+data.movie[i].img1+"' style='height:100pt'></div>")
+                    $('div').append("<div><h2>"+data.movie[i].title+"</h2><img src='/images/"+data.movie[i].img2+"' style='height:100pt'></div>")*/
+
+                    $('<img>', {
+                        src: '/images/'+data.movie[i].img1,
+                        alt: 'Little Bear',
+                        title:'I woof in your general direction',
+                        click: function(){
+                            alert($(this).attr('title'));
+                        }
+                    }).css({
+                        cursor: 'pointer',
+                        border: '1px solid black',
+                        padding: '12px 12px 20px 12px',
+                        backgroundColor: 'white'
+                    }).appendTo('body');
+                    $('<img>', {
+                        src: '/images/'+data.movie[i].img2,
+                        alt: 'Little Bear',
+                        title:'I woof in your general direction',
+                        click: function(){
+                            alert($(this).attr('title'));
+                        }
+                    }).css({
+                        cursor: 'pointer',
+                        border: '1px solid black',
+                        padding: '12px 12px 20px 12px',
+                        backgroundColor: 'white'
+                    }).appendTo('body');
+                    console.log('i :' , i)
+
+                }
+
+            }
+        });
+
+    });
+
+
+
+
+</script>
+<body>
+    <div></div>
+</body>
+</html>
