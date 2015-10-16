@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/10Day_151016/ejs.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/jade.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/movieApp.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/public/stylesheets" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/route/movie.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/tset.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/views/detail.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/views/ex.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/views/list.ejs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/10Day_151016/views/review_detail.ejs" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/2Day_151001/Lotto.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/5Day_151007/mongoEx.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/5Day_151007/mongoEx2.js" charset="UTF-8" />

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= data.title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= data.title %></h1>
+<ul>
+    <%for(var i in data){%>
+        <%if(i!="reviews"){%>
+            <li><%=i%> : <%=data[i]%></li>
+        <%}%>
+    <%}%>
+</ul>
+<a href="/movies/review/<%=data.title%>">리뷰 작성</a>
+<a href="/movies/update/<%=data.title%>">영화 수정</a>
+<a href="#" onclick="history.back()">뒤로 가기</a>
+
+</body>
+</html>

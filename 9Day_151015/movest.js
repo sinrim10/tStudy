@@ -39,6 +39,7 @@ var movieList = {
         "reviews":[]
     }
 };
+
 console.log('data ',movieList['아바타1']);
 
 function Post(){}

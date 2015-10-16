@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title1 %></h1>
+<ul>
+
+    <%for(var i=0;i<img.length;i++){ %>
+        <li>
+            <%=img[i].name%>
+            <img src='/<%=img[i].path%>'; style="height:150px">
+        </li>
+    <%}%>
+</ul>
+<p>Welcome to <%= title %></p>
+</body>
+</html>

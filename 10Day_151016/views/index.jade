@@ -1,0 +1,12 @@
+//
+   Created by skplanet on 2015-10-16.
+html
+   head
+      title= title
+      body
+         h1= title
+         ul
+            for image in img
+               li
+                  img(src="/"+image.path height="50px")
+                  span= image.name
