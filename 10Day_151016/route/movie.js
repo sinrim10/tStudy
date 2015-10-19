@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
+var moviefunc = require('../model/moviefunc');
 var movieList = {
     "아바타1":{
         "title":"아바타1",
@@ -26,11 +27,25 @@ var movieList = {
         "reviews":[]
     }
 };
+var request = require('request');
+/*request('http://www.google.com', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body) // Print the google web page.
+    }
+})*/
 
+router.get('/',function(req,res1){
+    request('http://localhost:3030/movies/list',function(err,res,body){
+        if (!err && res.statusCode == 200) {
+            var json = JSON.parse(body);
+            res1.render('list',{title:"영화 목록",data:json});
+        }
+    })
+});
+router.get('/list',function(req,res){
+    moviefunc.getAllMovies(req,res);
+});
 
-router.get('/',function(req,res){
-    res.render('list',{title:"영화 목록" , data:movieList});
-})
 router.get('/write',function(req,res){
     res.render('write_form',{});
 })
@@ -71,16 +86,10 @@ router.post('/review/:title',function(req,res){
     res.render('list',{title:"영화 목록",data:movieList})
     //res.render('list',{title:"영화 목록" , data:movieList});
 })
-router.post('/write',function(req,res){
-    //console.log('data1',req.query);
-    var title = req.body.title;
-    req.body.reviews = []
+router.post('/write',function(req,res,next){
     console.log('data2',req.body);
-
-    movieList[title] = req.body;
-
-    res.render('list',{title:"영화 목록",data:movieList})
-    //res.render('list',{title:"영화 목록" , data:movieList});
+    moviefunc.insMovies(req,res,next);
+    res.redirect('/');
 })
 router.post('/:id',function(req,res){//상세페이지
     var id = req.params.id;
