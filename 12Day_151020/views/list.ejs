@@ -7,12 +7,14 @@
 
 <body>
 <h1><%= title %></h1>
+<h3>극장명 : <%=cinema.name %></h3>
+<div><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=cinema.geo[0]%>,<%=cinema.geo[1]%>&zoom=9&scale=true&size=400x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid|color:red|label:<%=cinema.name%>|<%=cinema.geo[0]%>,<%=cinema.geo[1]%>"></div>
 <ul>
     <% for(var i =0; i< data.length;i++){%>
-        <li><a href="/movies/<%=data[i].movie_id%>"><%=data[i].title%></a></li>
+        <li><a href="/movies/detail/<%=data[i]._id%>"><%=data[i].title%></a></li>
     <%}%>
 </ul>
     <a href="/movies/write">영화 등록</a>
-
+    <a href="/cinema/list">극장 목록 보기</a>
 </body>
 </html>

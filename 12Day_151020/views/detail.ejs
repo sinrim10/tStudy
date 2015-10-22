@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%=data.data[0].title%></title>
+    <title><%=data.title%></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-    function delmovie(){
+    $(document).ready(function(){
+        $("#del").click(function(){
+            $.ajax({
+                url: "/movies/del",
+                type: 'DELETE',
+                data: {_id :'<%=data._id%>' },
+                success: function(data){
+                    if(data.result == "success")  {
+                        console.log('완료');
+                        location.href = "/cinema/list";
+                    }
+                },
+                error: function(){
+                console.log('에러')
+            }
+            });
+        });
+    });
+
+
+/*    function delmovie(){
         var delform = document.getElementById("delform");
         delform.submit();
-    }
+
+
+
+    }*/
 </script>
 <body>
-<h2><%=data.data[0].title%></h2>
-<h4>감독 : <%=data.data[0].director%></h4>
-<h4>연도 : <%=data.data[0].year%></h4>
-<h4>줄거리 : <%=data.data[0].synopsis%></h4>
+<h2><%=data.title%></h2>
+<h4>감독 : <%=data.director%></h4>
+<h4>연도 : <%=data.year%></h4>
+<h4>줄거리 : <%=data.synopsis%></h4>
 <h2>한줄평</h2>
 <ul>
-    <%for(var i=0;i<data.review.length;i++){%>
-        <li><%=data.review[i].review%></li>
+    <%for(var i=0;i<data.reviews.length;i++){%>
+        <li><%=data.reviews[i]%></li>
     <%}%>
 </ul>
-<form action="/movies/review" method="post">
+<form action="/movies/add" method="post">
     <input type="text" name="review">
-    <input type="hidden" name="movie_id" value="<%=data.data[0].movie_id%>">
+    <input type="hidden" name="_id" value="<%=data._id%>">
     <input type="submit" value="올리기">
 </form>
 <form action="/movies/del" method="post" id="delform">
-    <input type="hidden" name="movie_id" value="<%=data.data[0].movie_id%>">
+    <input type="hidden" name="_id" value="<%=data._id%>">
 </form>
-<a href="/movies">영화 목록 보기</a>
-<a href="#" onclick="delmovie()">영화 삭제</a>
+<a href="/cinema/list">극장 목록 보기</a>
+<a href="#" id="del">영화 삭제</a>
 
 </body>
 </html>
