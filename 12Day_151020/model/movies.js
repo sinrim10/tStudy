@@ -17,7 +17,7 @@ var MonvieSchema = new Schema({
 
 MonvieSchema.path('title').required(true,'타이틀 공백');
 
-MonvieSchema.methods = {
+/*MonvieSchema.methods = {
     addReview : function(id,review,cb){
        this.findById(id, function (err, doc) {
             if (err) throw err;
@@ -28,7 +28,7 @@ MonvieSchema.methods = {
             });
         });
     }
-}
+}*/
 
 
 module.exports = db.model('Movies',MonvieSchema);
