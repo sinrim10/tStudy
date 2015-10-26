@@ -25,3 +25,5 @@ CinemaSchema.methods = {
 }
 
 module.exports = db.model('Cinema', CinemaSchema);
+
+
