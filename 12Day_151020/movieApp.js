@@ -13,6 +13,7 @@ var uri = "mongodb://localhost:27017/moviest"
 global.db = mongoose.createConnection(uri);
 var movies = require('./route/movies');
 var cinema = require('./route/cinema');
+var bikes = require('./route/bike');
 
 app.set('port',3030);
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/movies',movies);
 app.use('/cinema',cinema);
+app.use('/bikes',bikes)
 function errorHandler(err, req, res, next) {
     if (res.headersSent) {
         return next(err);
